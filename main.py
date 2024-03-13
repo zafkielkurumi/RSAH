@@ -1,6 +1,6 @@
 import sys
 from RSAH import connect_adb, start_app, start_emulator
-from modules.task import  ContinuedTask, Login
+from modules.task import  ContinuedTask, Login, AllTask
 from modules.utils.log import logging_print
 from modules.utils.opencv import match_image
 from modules.utils.game import btn_pic, mathGame
@@ -21,8 +21,7 @@ if __name__ in ["__main__", "__mp_main__"]:
     start_emulator()
     connect_adb()
     start_app()
-    Login().run()
-    ContinuedTask().run()
+    AllTask().run()
   except Exception as e:
     import traceback
     traceback.print_exc()

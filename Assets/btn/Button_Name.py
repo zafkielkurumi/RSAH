@@ -7,5 +7,5 @@ class ButtonName:
   BTN_START_BATTLE = '/btn/BTN_START_BATTLE'
   BTN_IN_BATTLE = '/btn/BTN_IN_BATTLE'
   BTN_START_MISSION = '/btn/BTN_START_MISSION'
-  Login = '/btn/Login'
+  BTN_LOGIN = '/btn/BTN_LOGIN'
   

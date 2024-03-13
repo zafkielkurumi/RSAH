@@ -8,6 +8,7 @@ from modules.utils.game import btn_pic, clickScreen, mathGame
 from modules.utils.log import logging_print
 
 
+
 class Task:
   def __init__(self, name) -> None:
     self.name = name

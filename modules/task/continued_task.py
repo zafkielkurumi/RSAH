@@ -4,6 +4,7 @@ from modules.task.task import Task
 from modules.utils.adb import screenshot
 from modules.utils.game import btn_pic, clickScreen, mathGame
 from modules.utils.log import logging_print
+from modules.config import AHConfig, config
 
 Btn_List = [
    btn_pic(ButtonName.BTN_BATTLE),
@@ -16,7 +17,7 @@ Btn_List = [
 class ContinuedTask(Task):
   sleepTime = 1
 
-  def __init__(self, name="Tower") -> None:
+  def __init__(self, name="ContinuedTask") -> None:
     super().__init__(name)
   
     

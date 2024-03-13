@@ -43,12 +43,12 @@ if __name__ in {"__main__", "__mp_main__"}:
          ui.input().bind_value(config.ah_config, "EMULATOR_IP")
 
       with ui.column():
-         ui.checkbox("登录游戏", value=include_str("登录游戏"), on_change=change_task("登录游戏"))
+         # ui.checkbox("登录游戏", value=include_str("登录游戏"), on_change=change_task("登录游戏"))
          v = ui.checkbox("持续任务", value=include_str("持续任务"), on_change=change_task("持续任务"))
-         with ui.column().bind_visibility(v, "value"):
-            ui.label("自动点击开始战斗和点击加速弹丸")
-            ui.checkbox("自动开始战斗").bind_value(config.ah_config, "auto_battle")
-            ui.checkbox("自动点击加速弹丸").bind_value(config.ah_config, "auto_speed")
+         # with ui.column().bind_visibility(v, "value"):
+         #    ui.label("自动点击开始战斗和点击加速弹丸")
+         #    ui.checkbox("自动开始战斗").bind_value(config.ah_config, "auto_battle")
+         #    ui.checkbox("自动点击加速弹丸").bind_value(config.ah_config, "auto_speed")
 
       ui.button("保存", on_click=save_config_notify)
       ui.button("保存并运行", on_click=save_config_run)

@@ -20,7 +20,7 @@ class Login(Task):
   
   def enterGame(self):
     # 点击开始
-    b, point = mathGame(btn_pic(ButtonName.Login))
+    b, point = mathGame(btn_pic(ButtonName.BTN_LOGIN))
     
     if b:
       # 由于无法准确获取开始按钮，朝下挪移一点

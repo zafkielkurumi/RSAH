@@ -30,13 +30,13 @@ def connect_adb():
       
 def start_app():
   logging_print('开始打开游戏')
-  if check_app_running(APP_NAME):
+  if check_app_running(config.ah_config["APP_NAME"]):
     logging_print("游戏中")
     return True
   for i in range(10):
-    open_app(APP_NAME)
+    open_app(config.ah_config["APP_NAME"])
     time.sleep(2)
-    if check_app_running(APP_NAME):
+    if check_app_running(config.ah_config["APP_NAME"]):
       logging_print('游戏已打开')
       return True
     else:
