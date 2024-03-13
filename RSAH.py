@@ -1,7 +1,7 @@
 import logging
 import subprocess
 import time
-from modules.config import APP_NAME, EMULATOR_PATH
+from modules.config import AHConfig, config
 from modules.utils.adb import check_app_running, check_connect, connect_device, disconnect_adb, open_app
 from modules.utils.log import logging_print
 
@@ -10,7 +10,7 @@ from modules.utils.subprocess_helper import subprocess_run
 def start_emulator():
   logging_print('开始启动模拟器')
   try:
-    subprocess_run(EMULATOR_PATH, isasync=True)
+    subprocess_run(config.ah_config["EMULATOR_PATH"], isasync=True)
   except Exception as e:
     logging_print("启动模拟器失败, 可能是没有以管理员模式运行 或 配置的模拟器路径有误")
 

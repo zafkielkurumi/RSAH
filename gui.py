@@ -1,12 +1,14 @@
+import os
+
+
 if __name__ in {"__main__", "__mp_main__"}:
     
   try:
-      from nicegui import ui
+      from nicegui import ui, native
       from modules.config import AHConfig, config
       from typing import List
-
-      task = config.ah_config["task"]
-
+      print("参数：")
+      task: List = config.ah_config["task"] 
       def include_str(str):
         return task.count(str) > 0
 
@@ -16,6 +18,8 @@ if __name__ in {"__main__", "__mp_main__"}:
 
       def save_config_run():
          config.save_config()
+         ui.notify("开始执行", position="top")
+         os.system(f'start RSAH.exe')
 
       def change_task(task_name):
         def change():
@@ -24,8 +28,6 @@ if __name__ in {"__main__", "__mp_main__"}:
           else:
              task.append(task_name)
         return change
-         
-
 
       with ui.row():
          ui.label('模拟器路径:')
@@ -49,8 +51,8 @@ if __name__ in {"__main__", "__mp_main__"}:
             ui.checkbox("自动点击加速弹丸").bind_value(config.ah_config, "auto_speed")
 
       ui.button("保存", on_click=save_config_notify)
-      ui.button("保存并运行")
-      ui.run()           # 进入消息循环
+      ui.button("保存并运行", on_click=save_config_run)
+      ui.run(native=True, window_size=(1280,720), title="雷索纳斯", language="zh-cn", reload=False, port=native.find_open_port())    
   except Exception as e:
     import traceback
     traceback.print_exc()

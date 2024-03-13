@@ -1,8 +1,9 @@
 {
     "EMULATOR_PATH": "C:/LDPlayer/LDPlayer9/dnplayer.exe",
-    "ADB_PATH": "./tools/adb/adb.exe3",
+    "ADB_PATH": "./tools/adb/adb.exe",
     "APP_NAME": "com.hermes.goda/com.hermes.goda.MainActivity",
     "EMULATOR_IP": "127.0.0.1:55656",
+    "SCREENSHOT_NAME": "screenshot.png",
     "task": [
         "持续任务",
         "登录游戏"
