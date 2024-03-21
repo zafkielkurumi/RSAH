@@ -1,5 +1,5 @@
 import sys
-from RSAH import connect_adb, start_app, start_emulator
+from modules.RSAH import rsah_start
 from modules.task import  ContinuedTask, Login, AllTask
 from modules.utils.log import logging_print
 from modules.utils.opencv import match_image
@@ -18,10 +18,7 @@ if __name__ in ["__main__", "__mp_main__"]:
       config.parseConfig("config.json")
     logging_print("开始任务")
     
-    start_emulator()
-    connect_adb()
-    start_app()
-    AllTask().run()
+    rsah_start()
   except Exception as e:
     import traceback
     traceback.print_exc()

@@ -4,6 +4,7 @@ import time
 from modules.config import AHConfig, config
 from modules.utils.adb import check_app_running, check_connect, connect_device, disconnect_adb, open_app
 from modules.utils.log import logging_print
+from modules.task import  ContinuedTask, Login, AllTask
 
 from modules.utils.subprocess_helper import subprocess_run
 
@@ -42,6 +43,12 @@ def start_app():
     else:
       logging_print('游戏打开失败')
       False
+
+def rsah_start():
+  start_emulator()
+  connect_adb()
+  start_app()
+  AllTask().run()
     
   
   

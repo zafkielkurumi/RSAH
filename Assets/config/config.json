@@ -4,10 +4,25 @@
     "APP_NAME": "com.hermes.goda/com.hermes.goda.MainActivity",
     "EMULATOR_IP": "127.0.0.1:5561",
     "SCREENSHOT_NAME": "screenshot.png",
-    "task": [
-        "登录游戏",
-        "持续任务"
-    ],
+    "task": {
+        "登录游戏": {
+            "run": true,
+            "params": {}
+        },
+        "持续任务": {
+            "run": true,
+            "params": {
+                "auto_battle": {
+                    "desc": "自动开始战斗",
+                    "run": true
+                },
+                "auto_speed": {
+                    "desc": "自动点击加速弹丸",
+                    "run": true
+                }
+            }
+        }
+    },
     "auto_battle": true,
     "auto_speed": true
 }

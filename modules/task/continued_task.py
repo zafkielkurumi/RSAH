@@ -30,6 +30,7 @@ class ContinuedTask(Task):
     """用于跑商过程轮询判断点击开始战斗，体力为0"""
     while(True):
       screenshot()
+      # print(config.ah_config)
       for btn in Btn_List:
           if  self.mathPic(btn):
             self.clickBtn(btn)()

@@ -7,10 +7,9 @@ if __name__ in {"__main__", "__mp_main__"}:
       from nicegui import ui, native
       from modules.config import AHConfig, config
       from typing import List
-      print("参数：")
-      task: List = config.ah_config["task"] 
-      def include_str(str):
-        return task.count(str) > 0
+      from modules.RSAH import rsah_start
+      taskList: List = config.ah_config["task"] 
+
 
       def save_config_notify():
         config.save_config()
@@ -19,14 +18,12 @@ if __name__ in {"__main__", "__mp_main__"}:
       def save_config_run():
          config.save_config()
          ui.notify("开始执行", position="top")
-         os.system(f'start RSAH.exe')
+         # os.system(f'start RSAH.exe')
+         rsah_start()
 
-      def change_task(task_name):
+      def change_task(task):
         def change():
-          if (include_str(task_name)):
-             task.remove(task_name)
-          else:
-             task.append(task_name)
+          task["run"] = not task["run"]
         return change
 
       with ui.row():
@@ -43,12 +40,12 @@ if __name__ in {"__main__", "__mp_main__"}:
          ui.input().bind_value(config.ah_config, "EMULATOR_IP")
 
       with ui.column():
-         # ui.checkbox("登录游戏", value=include_str("登录游戏"), on_change=change_task("登录游戏"))
-         v = ui.checkbox("持续任务", value=include_str("持续任务"), on_change=change_task("持续任务"))
-         # with ui.column().bind_visibility(v, "value"):
-         #    ui.label("自动点击开始战斗和点击加速弹丸")
-         #    ui.checkbox("自动开始战斗").bind_value(config.ah_config, "auto_battle")
-         #    ui.checkbox("自动点击加速弹丸").bind_value(config.ah_config, "auto_speed")
+         for key in taskList:
+            task = taskList[key]
+            v = ui.checkbox(key, value=task["run"], on_change=change_task(task))
+            with ui.column().bind_visibility(v, "value"):
+               for p in task["params"]:
+                  v = ui.checkbox(task["params"][p]["desc"], value=task["params"][p]["run"], on_change=change_task(task["params"][p]))
 
       ui.button("保存", on_click=save_config_notify)
       ui.button("保存并运行", on_click=save_config_run)
