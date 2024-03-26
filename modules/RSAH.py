@@ -4,7 +4,7 @@ import time
 from modules.config import AHConfig, config
 from modules.utils.adb import check_app_running, check_connect, connect_device, disconnect_adb, open_app
 from modules.utils.log import logging_print
-from modules.task import  ContinuedTask, Login, AllTask
+from modules.task import  LoopTask, Login, AllTask
 
 from modules.utils.subprocess_helper import subprocess_run
 

@@ -1,10 +1,10 @@
-from modules.task import Login, ContinuedTask, task
+from modules.task import Login, LoopTask, task
 from modules.config import AHConfig, config
 
 
 task_dict= {
     "登录游戏":[Login,{}],
-    "持续任务":[ContinuedTask,{}],
+    "循环任务":[LoopTask,{}],
 }
 
 class AllTask:

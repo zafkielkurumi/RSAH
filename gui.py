@@ -1,13 +1,16 @@
-import os
 
 
 if __name__ in {"__main__", "__mp_main__"}:
     
   try:
+      import os
       from nicegui import ui, native
       from modules.config import AHConfig, config
       from typing import List
       from modules.RSAH import rsah_start
+      import _thread
+
+ 
       taskList: List = config.ah_config["task"] 
 
 
@@ -19,7 +22,9 @@ if __name__ in {"__main__", "__mp_main__"}:
          config.save_config()
          ui.notify("开始执行", position="top")
          # os.system(f'start RSAH.exe')
-         rsah_start()
+         # rsah_start()
+         # ui.
+         _thread.start_new_thread(rsah_start, ())
 
       def change_task(task):
         def change():

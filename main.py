@@ -1,6 +1,6 @@
 import sys
 from modules.RSAH import rsah_start
-from modules.task import  ContinuedTask, Login, AllTask
+from modules.task import  LoopTask, Login, AllTask
 from modules.utils.log import logging_print
 from modules.utils.opencv import match_image
 from modules.utils.game import btn_pic, mathGame
