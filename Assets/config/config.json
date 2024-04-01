@@ -6,7 +6,7 @@
     "SCREENSHOT_NAME": "screenshot.png",
     "task": {
         "登录游戏": {
-            "run": false,
+            "run": true,
             "params": {}
         },
         "循环任务": {
@@ -18,7 +18,7 @@
                 },
                 "auto_speed": {
                     "desc": "自动点击加速弹丸",
-                    "run": true
+                    "run": false
                 },
                 "color_tree": {
                     "run": false,
@@ -27,6 +27,15 @@
                 "activity_shi_zhi": {
                     "run": false,
                     "desc": "自动循环活动石芝，请保证体力充足"
+                },
+                "enter_station": {
+                    "run": true,
+                    "desc": "自动进入站点"
+                },
+                "loopMission": {
+                    "run": true,
+                    "desc": "自动循环打材料,请先保证已经全部通关",
+                    "level": 10
                 }
             }
         }

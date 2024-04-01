@@ -21,9 +21,6 @@ if __name__ in {"__main__", "__mp_main__"}:
       def save_config_run():
          config.save_config()
          ui.notify("开始执行", position="top")
-         # os.system(f'start RSAH.exe')
-         # rsah_start()
-         # ui.
          _thread.start_new_thread(rsah_start, ())
 
       def change_task(task):
@@ -48,7 +45,7 @@ if __name__ in {"__main__", "__mp_main__"}:
          for key in taskList:
             task = taskList[key]
             v = ui.checkbox(key, value=task["run"], on_change=change_task(task))
-            with ui.column().bind_visibility(v, "value"):
+            with ui.column().bind_visibility(v, "value").style("padding-left: 20px"):
                for p in task["params"]:
                   v = ui.checkbox(task["params"][p]["desc"], value=task["params"][p]["run"], on_change=change_task(task["params"][p]))
 

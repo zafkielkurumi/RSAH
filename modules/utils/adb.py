@@ -68,3 +68,6 @@ def open_app(targetApp):
 def click_on_screen(x, y):
     """Click on the given coordinates."""
     subprocess_run([config.ah_config["ADB_PATH"], "-s", config.ah_config["EMULATOR_IP"], "shell", "input", "tap", str(int(x)), str(int(y))])
+
+def swiper_on_screen(startx, starty, endx, endy, duration = 500):
+   subprocess_run([config.ah_config["ADB_PATH"], "-s", config.ah_config["EMULATOR_IP"], "shell", "input", "swipe", int(startx), int(starty), int(endx), int(endy), duration])
