@@ -28,7 +28,7 @@ class LoopTask(Task):
       self.autoBattle()
       self.loop_color_tree()
       self.activity_shi_zhi()
-      self.autoEnteryCity()
+      self.autoEnteryStation()
       self.loopMission()
       time.sleep(self.sleepTime)
 
@@ -63,7 +63,7 @@ class LoopTask(Task):
     if conf["run"]:
       self.clickBtn(btn_pic(ButtonName.BTN_ACTIVITY_SHI_ZHI))()
 
-  def autoEnteryCity(self):
+  def autoEnteryStation(self):
     """自动进入站点"""
     conf = self.conf["params"]["enter_station"]
     if conf["run"]:
@@ -74,7 +74,7 @@ class LoopTask(Task):
     conf = self.conf["params"]["loopMission"]
     startX = 1280
     startY = 360
-    Btn_List = [
+    btn_list = [
       btn_pic(ButtonName.BTN_DANGER_10),
       btn_pic(ButtonName.BTN_DANGER_6),
       btn_pic(ButtonName.BTN_DANGER_3),
@@ -84,8 +84,9 @@ class LoopTask(Task):
       while target:
         endx = startX + 100
         swiper_on_screen(startX, startY, endx, 0)
-        time.sleep(600)
-        if self.mathPic(Btn_List[conf["level"]]):
+        time.sleep(0.6)
+        print(btn_list[conf["level"]])
+        if self.mathPic(btn_list[conf["level"]], True):
           target = False
           print("找到目标")
 

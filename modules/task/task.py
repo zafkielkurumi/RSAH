@@ -70,7 +70,7 @@ class Task:
     return click
   
   @staticmethod
-  def mathPic(url: str):
-    return mathGame(url)[0]
+  def mathPic(url: str, showResult = False):
+    return mathGame(url, showResult)[0]
 
   

@@ -6,7 +6,7 @@
     "SCREENSHOT_NAME": "screenshot.png",
     "task": {
         "登录游戏": {
-            "run": true,
+            "run": false,
             "params": {}
         },
         "循环任务": {
@@ -35,7 +35,7 @@
                 "loopMission": {
                     "run": true,
                     "desc": "自动循环打材料,请先保证已经全部通关",
-                    "level": 10
+                    "level": 0
                 }
             }
         }
