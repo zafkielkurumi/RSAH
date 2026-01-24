@@ -5,7 +5,7 @@
     "EMULATOR_IP": "emulator-5560",
     "SCREENSHOT_NAME": "screenshot.png",
     "SURPORT": "FANG_ZHENG",
-    "COUNT85": 5,
+    "COUNT85": 3,
     "task": {
         "登录游戏": {
             "run": false,
@@ -24,11 +24,11 @@
                 },
                 "auto_90": {
                     "desc": "自动90以上",
-                    "run": true
+                    "run": false
                 },
                 "auto_85": {
                     "desc": "自动85和妹妹",
-                    "run": false
+                    "run": true
                 },
                 "auto_battle": {
                     "desc": "自动开始战斗",

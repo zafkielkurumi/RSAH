@@ -106,6 +106,7 @@ class LoopTask(Task):
     if conf["run"]:
       self.clickBtn(btn_pic(ButtonName.BTN_SKIP))()
       self.clickBtn(btn_pic(ButtonName.BTN_BLANK_CONTINUE))()
+      self.clickBtn(btn_pic(ButtonName.BTN_BLANK_CONTINUE1))()
 
   def autoAp(self):
     """自动AP"""
@@ -113,14 +114,17 @@ class LoopTask(Task):
     if conf["run"]:
       if self.mathPic(btn_pic(ButtonName.BTN_AP_TIP)):
         # 点击4次BTN_AP_USE.png
-        self.clickBtn(btn_pic(ButtonName.BTN_AP_USE))()
-        screenshot()
-        for i in range(4):
-          time.sleep(0.5)
+        self.clickBtn(btn_pic(ButtonName.BTN_AP_USE1))()
+        for i in range(2):
+          screenshot()
+          time.sleep(0.6)
           logging_print("BTN_AP_USE")
           if self.mathPic(btn_pic(ButtonName.BTN_AP_USE)):
-            self.clickBtn(btn_pic(ButtonName.BTN_AP_USE), -90, 100)()
-            time.sleep(0.5)
+            screenshot()
+            time.sleep(0.7)
+            self.clickBtn(btn_pic(ButtonName.BTN_AP_USE))()
+          time.sleep(0.7)
+            
         self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
         time.sleep(0.5)
         self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
