@@ -47,7 +47,7 @@ def start_app():
 def rsah_start():
   start_emulator()
   connect_adb()
-  start_app()
+  # start_app()
   AllTask().run()
     
   

@@ -40,6 +40,12 @@ if __name__ in {"__main__", "__mp_main__"}:
       with ui.row():
          ui.label('模拟器运行的端口号:')
          ui.input().bind_value(config.ah_config, "EMULATOR_IP")
+      with ui.row():
+         ui.label('助战(FANG_ZHENG/LAO_WANG):')
+         ui.input().bind_value(config.ah_config, "SURPORT")
+      with ui.row():
+         ui.label('85次数,设置很大就可以不找妹妹:')
+         ui.input().bind_value(config.ah_config, "COUNT85")
 
       with ui.column():
          for key in taskList:

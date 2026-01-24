@@ -39,6 +39,6 @@ def match_image(source, target, showResult = False):
       cv2.waitKey(0)
       cv2.destroyAllWindows()        
     # 结果值超过0.8认为符合
-    if(max_val >= 0.75):
+    if(max_val >= 0.8):
         return (True, (center_x, center_y))
     return (False, (0, 0))

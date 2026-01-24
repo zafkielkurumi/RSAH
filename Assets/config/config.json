@@ -1,9 +1,11 @@
 {
-    "EMULATOR_PATH": "C:/LDPlayer/LDPlayer9/dnplayer.exe index=3",
+    "EMULATOR_PATH": "F:/LDPlayer/LDPlayer9/dnplayer.exe index=3",
     "ADB_PATH": "./tools/adb/adb.exe",
     "APP_NAME": "com.hermes.goda/com.hermes.goda.MainActivity",
-    "EMULATOR_IP": "127.0.0.1:5561",
+    "EMULATOR_IP": "emulator-5560",
     "SCREENSHOT_NAME": "screenshot.png",
+    "SURPORT": "FANG_ZHENG",
+    "COUNT85": 5,
     "task": {
         "登录游戏": {
             "run": false,
@@ -12,9 +14,25 @@
         "循环任务": {
             "run": true,
             "params": {
+                "auto_skip": {
+                    "desc": "自动点击跳过",
+                    "run": true
+                },
+                "auto_ap": {
+                    "desc": "自动吃红药",
+                    "run": true
+                },
+                "auto_90": {
+                    "desc": "自动90以上",
+                    "run": true
+                },
+                "auto_85": {
+                    "desc": "自动85和妹妹",
+                    "run": false
+                },
                 "auto_battle": {
                     "desc": "自动开始战斗",
-                    "run": true
+                    "run": false
                 },
                 "auto_speed": {
                     "desc": "自动点击加速弹丸",
@@ -29,11 +47,11 @@
                     "desc": "自动循环活动石芝，请保证体力充足"
                 },
                 "enter_station": {
-                    "run": true,
+                    "run": false,
                     "desc": "自动进入站点"
                 },
                 "loopMission": {
-                    "run": true,
+                    "run": false,
                     "desc": "自动循环打材料,请先保证已经全部通关",
                     "level": 0
                 }

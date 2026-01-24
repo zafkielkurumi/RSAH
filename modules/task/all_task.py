@@ -1,10 +1,13 @@
-from modules.task import Login, LoopTask, task
+from modules.task import Login, LoopTask, task, LoopEight, LoopNine
 from modules.config import AHConfig, config
+from modules.utils.log import logging_print
 
 
 task_dict= {
-    "登录游戏":[Login,{}],
+    # "登录游戏":[Login,{}],
     "循环任务":[LoopTask,{}],
+    # "循环85":[LoopEight,{}],
+    # "循环九":[LoopNine,{}],
 }
 
 class AllTask:

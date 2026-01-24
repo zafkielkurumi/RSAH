@@ -12,7 +12,7 @@ from modules.utils.log import logging_print
 class Task:
   def __init__(self, name) -> None:
     self.name = name
-    
+    self.bttleCount = 0
 
     
   def start(self):
@@ -43,13 +43,13 @@ class Task:
     return False
 
   @staticmethod
-  def clickBtn(imgUrl: str):
+  def clickBtn(imgUrl: str, x: int = 0, y: int = 0):
     def click():
       # 点击开始
       b, point = mathGame(imgUrl)
       if b:
         # 由于无法准确获取开始按钮，朝下挪移一点
-        clickScreen((point[0], point[1]))
+        clickScreen((point[0] + x, point[1] + y))
     return click
     
   @staticmethod
@@ -58,9 +58,9 @@ class Task:
     return mathGame(btn_pic(ButtonName.BTN_START_MISSION))[0]
 
   @staticmethod
-  def mathCondition(url: str):
+  def mathCondition(url: str, showResult = False):
     def math():
-      return mathGame(url)[0]
+      return mathGame(url, showResult)[0]
     return math
   
   @staticmethod
