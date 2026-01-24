@@ -124,7 +124,7 @@ class LoopTask(Task):
             time.sleep(0.7)
             self.clickBtn(btn_pic(ButtonName.BTN_AP_USE))()
           time.sleep(0.7)
-            
+        time.sleep(2)  
         self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
         time.sleep(0.5)
         self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
