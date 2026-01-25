@@ -24,11 +24,11 @@
                 },
                 "auto_90": {
                     "desc": "自动90以上",
-                    "run": false
+                    "run": true
                 },
                 "auto_85": {
                     "desc": "自动85和妹妹",
-                    "run": true
+                    "run": false
                 },
                 "auto_battle": {
                     "desc": "自动开始战斗",

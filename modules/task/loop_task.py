@@ -28,7 +28,7 @@ class LoopTask(Task):
     
     while(self.conf["run"]):
       screenshot()
-      time.sleep(0.6)
+      time.sleep(0.2)
       # self.autoSpeed()
       # self.autoBattle()
       # self.loop_color_tree()
@@ -195,13 +195,14 @@ class LoopTask(Task):
                   target = False
                   print("找到目标")
                   self.clickBtn(SURPORT)()
+                  time.sleep(0.6)
                 if(endy < -900):
                   self.clickBtn(btn_pic(ButtonName.BTN_SURPORT), 50, 220)()
                 
                 
                 swiper_on_screen(startX, startY, 0, endy, 1500)
                 time.sleep(1.5)
-        time.sleep(0.6)
+                
         if (self.mathCondition(btn_pic(ButtonName.BTN_CONFIRM1))):
           self.clickBtn(btn_pic(ButtonName.BTN_CONFIRM1))()
         if (self.mathCondition(btn_pic(ButtonName.BTN_BATTLE_START))):
