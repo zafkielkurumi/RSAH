@@ -4,8 +4,8 @@
     "APP_NAME": "com.hermes.goda/com.hermes.goda.MainActivity",
     "EMULATOR_IP": "emulator-5560",
     "SCREENSHOT_NAME": "screenshot.png",
-    "SURPORT": "FANG_ZHENG",
-    "COUNT85": 3,
+    "SURPORT": "LAO_WANG",
+    "COUNT85": 5,
     "task": {
         "登录游戏": {
             "run": false,
