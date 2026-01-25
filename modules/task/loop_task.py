@@ -28,12 +28,13 @@ class LoopTask(Task):
     
     while(self.conf["run"]):
       screenshot()
-      self.autoSpeed()
-      self.autoBattle()
-      self.loop_color_tree()
-      self.activity_shi_zhi()
-      self.autoEnteryStation()
-      self.loopMission()
+      time.sleep(0.6)
+      # self.autoSpeed()
+      # self.autoBattle()
+      # self.loop_color_tree()
+      # self.activity_shi_zhi()
+      # self.autoEnteryStation()
+      # self.loopMission()
       self.autoSkip()
       self.autoAp()
       self.auto90()
@@ -115,16 +116,14 @@ class LoopTask(Task):
       if self.mathPic(btn_pic(ButtonName.BTN_AP_TIP)):
         # 点击4次BTN_AP_USE.png
         self.clickBtn(btn_pic(ButtonName.BTN_AP_USE1))()
-        for i in range(2):
+        time.sleep(0.6)
+        for i in range(4):
           screenshot()
           time.sleep(0.6)
           logging_print("BTN_AP_USE")
           if self.mathPic(btn_pic(ButtonName.BTN_AP_USE)):
-            screenshot()
-            time.sleep(0.7)
             self.clickBtn(btn_pic(ButtonName.BTN_AP_USE))()
-          time.sleep(0.7)
-        time.sleep(2)  
+        time.sleep(1)  
         self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
         time.sleep(0.5)
         self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
