@@ -24,7 +24,8 @@ class LoopTask(Task):
     """用于跑商过程轮询判断点击开始战斗，体力为0"""
     logging_print('开始持续执行自动跳过')
     logging_print('开始持续执行自动AP')
-    
+    self.changeMode = False
+    self.alchemyTime = 0
     
     while(self.conf["run"]):
       screenshot()
@@ -39,15 +40,10 @@ class LoopTask(Task):
       self.autoAp()
       self.auto90()
       self.auto85()
+      self.autoAlchemy()
+      self.autoDoAlchemy()
 
       time.sleep(self.sleepTime)
-
-  def autoSpeed(self):
-    """自动点击加入弹丸，只有前进才点击""" 
-    conf = self.conf["params"]["auto_speed"]
-    if conf["run"]:
-      if self.mathPic(btn_pic(ButtonName.BTN_GO)):
-        self.clickBtn(btn_pic(ButtonName.BTN_SPEED))()
 
   def autoBattle(self):
     """自动开始战斗"""
@@ -60,46 +56,6 @@ class LoopTask(Task):
       ]
       for btn in Btn_List:
         self.clickBtn(btn)()
-  
-  def loop_color_tree(self):
-    """循环彩树"""
-    conf = self.conf["params"]["color_tree"]
-    if conf["run"]:
-      self.clickBtn(btn_pic(ButtonName.BTN_LOOP_CAI_SHU))()
-
-  def activity_shi_zhi(self):
-    """活动石芝"""
-    conf = self.conf["params"]["activity_shi_zhi"]
-    if conf["run"]:
-      self.clickBtn(btn_pic(ButtonName.BTN_ACTIVITY_SHI_ZHI))()
-
-  def autoEnteryStation(self):
-    """自动进入站点"""
-    conf = self.conf["params"]["enter_station"]
-    if conf["run"]:
-      self.clickBtn(btn_pic(ButtonName.BTN_ENTER_STATION))()
-
-  def loopMission(self):
-    """自动循环打材料,请先保证已经全部通关"""
-    conf = self.conf["params"]["loopMission"]
-    startX = 1280
-    startY = 360
-    btn_list = [
-      btn_pic(ButtonName.BTN_DANGER_10),
-      btn_pic(ButtonName.BTN_DANGER_6),
-      btn_pic(ButtonName.BTN_DANGER_3),
-    ]
-    if conf["run"]:
-      target = True
-      while target:
-        endx = startX + 100
-        swiper_on_screen(startX, startY, endx, 0)
-        time.sleep(0.6)
-        print(btn_list[conf["level"]])
-        if self.mathPic(btn_list[conf["level"]], True):
-          target = False
-          print("找到目标")
-
     
   def autoSkip(self):
     """自动跳过"""
@@ -134,17 +90,21 @@ class LoopTask(Task):
     """自动85和妹妹"""
     conf = self.conf["params"]["auto_85"]
     if conf["run"]:
-      # self.runUtil(self.clickBtn(btn_pic(ButtonName.BTN_START_MISSION) ), self.mathCondition(btn_pic(ButtonName.BTN_ACTIVITY)))
+      # self.runUtil(self.clickBtn(btn_pic(ButtonName.BTN_START_MISSION) ), self.mathPic(btn_pic(ButtonName.BTN_ACTIVITY)))
       # 点击挑战
       # 副本确定
-      if (self.mathCondition(btn_pic(ButtonName.BTN_CONFIRM1))):
+      # 误触编队
+      if (self.mathPic(btn_pic(ButtonName.BTN_BD))):
+        print("误触编队")
+        self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
+      if (self.mathPic(btn_pic(ButtonName.BTN_CONFIRM1))):
         self.clickBtn(btn_pic(ButtonName.BTN_CONFIRM1))()
        # 挑战副本
-      if (self.mathCondition(btn_pic(ButtonName.BTN_CHALLENGE))):
+      if (self.mathPic(btn_pic(ButtonName.BTN_CHALLENGE))):
         self.clickBtn(btn_pic(ButtonName.BTN_CHALLENGE))()
-      if (self.mathCondition(btn_pic(ButtonName.BTN_CHALLENGE1))):
+      if (self.mathPic(btn_pic(ButtonName.BTN_CHALLENGE1))):
         self.clickBtn(btn_pic(ButtonName.BTN_CHALLENGE1))()
-      if (self.mathCondition(btn_pic(ButtonName.BTN_SURPORT))):
+      if (self.mathPic(btn_pic(ButtonName.BTN_SURPORT))):
         self.clickBtn(btn_pic(ButtonName.BTN_SURPORT), 50, 220)()
         # 开始战斗了
       logging_print(self.bttleCount)
@@ -169,13 +129,13 @@ class LoopTask(Task):
     """自动90以上"""
     conf = self.conf["params"]["auto_90"]
     if conf["run"]:
-      # self.runUtil(self.clickBtn(btn_pic(ButtonName.BTN_START_MISSION) ), self.mathCondition(btn_pic(ButtonName.BTN_ACTIVITY)))
+      # self.runUtil(self.clickBtn(btn_pic(ButtonName.BTN_START_MISSION) ), self.mathPic(btn_pic(ButtonName.BTN_ACTIVITY)))
       # 点击挑战
        # 挑战副本
-        if (self.mathCondition(btn_pic(ButtonName.BTN_CHALLENGE))):
+        if (self.mathPic(btn_pic(ButtonName.BTN_CHALLENGE))):
           self.clickBtn(btn_pic(ButtonName.BTN_CHALLENGE))()
 
-        if (self.mathCondition(btn_pic(ButtonName.BTN_CREATE_HOUSE))):
+        if (self.mathPic(btn_pic(ButtonName.BTN_CREATE_HOUSE))):
           self.clickBtn(btn_pic(ButtonName.BTN_CREATE_HOUSE))()
 
         # 助战
@@ -203,18 +163,91 @@ class LoopTask(Task):
                     self.clickBtn(btn_pic(ButtonName.BTN_SURPORT), 50, 220)()
                 
                 
-                
-                
-                
-        if (self.mathCondition(btn_pic(ButtonName.BTN_CONFIRM1))):
+        # 误触编队
+        if (self.mathPic(btn_pic(ButtonName.BTN_BD))):
+          print("误触编队")
+          self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
+        if (self.mathPic(btn_pic(ButtonName.BTN_CONFIRM1))):
           self.clickBtn(btn_pic(ButtonName.BTN_CONFIRM1))()
-        if (self.mathCondition(btn_pic(ButtonName.BTN_BATTLE_START))):
+        if (self.mathPic(btn_pic(ButtonName.BTN_BATTLE_START))):
           self.clickBtn(btn_pic(ButtonName.BTN_BATTLE_START))()
-        if (self.mathCondition(btn_pic(ButtonName.BTN_CONFIRM))):
+        if (self.mathPic(btn_pic(ButtonName.BTN_CONFIRM))):
           self.clickBtn(btn_pic(ButtonName.BTN_CONFIRM))()
         
         if self.mathPic(btn_pic(ButtonName.BTN_CONFIRM2)):
           self.clickBtn(btn_pic(ButtonName.BTN_CONFIRM2))()
         if self.mathPic(btn_pic(ButtonName.BTN_BATTLE_SUCCESS2)):
           self.clickBtn(btn_pic(ButtonName.BTN_BATTLE_SUCCESS2))()
+
+  def autoAlchemy(self):
+    """自动材料本"""
+    conf = self.conf["params"]["loop_alchemy"]
+    if conf["run"]:
+      # 选择助战
+      if (self.mathPic(btn_pic(ButtonName.BTN_SURPORT))):
+        self.clickBtn(btn_pic(ButtonName.BTN_SURPORT), 50, 220)()
+      # 点击挑战
+      if (self.mathPic(btn_pic(ButtonName.BTN_START_BATTLE_CL))):
+        self.clickBtn(btn_pic(ButtonName.BTN_START_BATTLE_CL))()
+      # 开始战斗
+      if (self.mathPic(btn_pic(ButtonName.BTN_START_BATTLE_CL_2))):
+        self.clickBtn(btn_pic(ButtonName.BTN_START_BATTLE_CL_2))()
+        # 开始战斗了
+      if self.mathPic(btn_pic(ButtonName.BTN_BLANK_CONTINUE)):
+        self.clickBtn(btn_pic(ButtonName.BTN_BLANK_CONTINUE))()
+		# 再次挑战
+      if self.mathPic(btn_pic(ButtonName.BTN_BATTLE_AGAIN)):
+        self.clickBtn(btn_pic(ButtonName.BTN_BATTLE_AGAIN))()
+
+  def autoDoAlchemy(self):
+    """自动炼金"""
+    conf = self.conf["params"]["auto_alchemy"]
+    if conf["run"]:
+      if self.alchemyTime >= int(config.ah_config["AlchemyTime"]):
+        return
+      # 选择炼金瓶
+      if (self.mathPic(btn_pic(ButtonName.BTN_LJ))):
+        self.clickBtn(btn_pic(ButtonName.BTN_LJ))()
+      # 检查右上角是否为道具数量
+      if (self.mathPic(btn_pic(ButtonName.BTN_LJ_YJXZ)) and not self.changeMode):
+        logging_print("切换模式")
+        self.clickBtn(btn_pic(ButtonName.BTN_LJ_XZ))()
+        time.sleep(0.6)
+        clickScreen((760, 200))
+        time.sleep(0.6)
+        self.changeMode = True
+      # 再次检查是否在道具数量界面
+      if (self.mathPic(btn_pic(ButtonName.BTN_LJ_DJSL2))):
+        # 检查白材料位置
+        b, point = mathGame(btn_pic(ButtonName.BTN_LJ_WHITE))
+        if b:
+          print("白材料位置 x:", point[0], " y:", point[1])
+          if point[0] < 440 and point[1] < 300:
+            # 到达左上角, 停止任务
+            logging_print("炼金完毕")
+            self.clickBtn(btn_pic(ButtonName.BTN_LJ_CANCEL))()
+            time.sleep(0.6)
+            self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
+            time.sleep(2)
+        # 一键选择材料
+        self.clickBtn(btn_pic(ButtonName.BTN_LJ_YJXZ))()
+        logging_print("一键选择, 请确认材料是否有异常!")
+        time.sleep(2)
+        self.clickBtn(btn_pic(ButtonName.BTN_LJ_CONFIRM))()
+        logging_print("确认材料")
+        time.sleep(0.4)
+        self.alchemyTime = self.alchemyTime + 1
+        logging_print("开始炼金,当前第" + str(self.alchemyTime) + "轮")
+        clickScreen((1000, 600))
+        time.sleep(2)
+      if (self.mathPic(btn_pic(ButtonName.BTN_LJ_OBTAIN))):
+        clickScreen((1200, 700))
+        time.sleep(0.6)
+        if self.alchemyTime >= int(config.ah_config["AlchemyTime"]):
+          logging_print("炼金完毕")
+          self.clickBtn(btn_pic(ButtonName.BTN_LJ_CANCEL))()
+          time.sleep(0.6)
+          self.clickBtn(btn_pic(ButtonName.BTN_BACK))()
+          time.sleep(2)
+
 

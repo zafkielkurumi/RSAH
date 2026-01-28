@@ -46,6 +46,9 @@ if __name__ in {"__main__", "__mp_main__"}:
       with ui.row():
          ui.label('85次数,设置很大就可以不找妹妹:')
          ui.input().bind_value(config.ah_config, "COUNT85")
+      with ui.row():
+         ui.label('炼金轮数,到达后自动停止:')
+         ui.input().bind_value(config.ah_config, "AlchemyTime")
 
       with ui.column():
          for key in taskList:

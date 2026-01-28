@@ -6,7 +6,7 @@ from modules.utils.log import logging_print
 task_dict= {
     # "登录游戏":[Login,{}],
     "循环任务":[LoopTask,{}],
-    # "循环85":[LoopEight,{}],
+    "循环85":[LoopEight,{}],
     # "循环九":[LoopNine,{}],
 }
 
