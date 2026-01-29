@@ -1,11 +1,12 @@
 {
-    "EMULATOR_PATH": "F:/LDPlayer/LDPlayer9/dnplayer.exe index=3",
-    "ADB_PATH": "./tools/adb/adb.exe",
+    "EMULATOR_PATH": "\"C:\\Program Files\\Netease\\MuMuPlayer-12.0\\nx_main\\MuMuNxMain.exe\" -v 1",
+    "ADB_PATH": ".\\tools\\adb\\adb.exe",
     "APP_NAME": "com.hermes.goda/com.hermes.goda.MainActivity",
-    "EMULATOR_IP": "emulator-5560",
+    "EMULATOR_IP": "emulator-5554",
     "SCREENSHOT_NAME": "screenshot.png",
     "SURPORT": "LAO_WANG",
     "COUNT85": 5,
+    "AlchemyTime": "1",
     "task": {
         "登录游戏": {
             "run": false,
@@ -24,36 +25,19 @@
                 },
                 "auto_90": {
                     "desc": "自动90以上",
-                    "run": true
+                    "run": false
                 },
                 "auto_85": {
                     "desc": "自动85和妹妹",
                     "run": false
                 },
-                "auto_battle": {
-                    "desc": "自动开始战斗",
+                "loop_alchemy": {
+                    "desc": "自动材料本",
                     "run": false
                 },
-                "auto_speed": {
-                    "desc": "自动点击加速弹丸",
-                    "run": false
-                },
-                "color_tree": {
-                    "run": false,
-                    "desc": "自动循环砍彩树，请保证体力充足"
-                },
-                "activity_shi_zhi": {
-                    "run": false,
-                    "desc": "自动循环活动石芝，请保证体力充足"
-                },
-                "enter_station": {
-                    "run": false,
-                    "desc": "自动进入站点"
-                },
-                "loopMission": {
-                    "run": false,
-                    "desc": "自动循环打材料,请先保证已经全部通关",
-                    "level": 0
+                "auto_alchemy": {
+                    "desc": "自动炼金",
+                    "run": true
                 }
             }
         }
